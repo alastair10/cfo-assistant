@@ -1,0 +1,4 @@
+// gives basic defaults for eslinting
+{
+  "extends": "react-app"
+}
