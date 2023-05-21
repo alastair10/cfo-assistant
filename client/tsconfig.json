@@ -1,9 +1,13 @@
 {
   "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"] // this is part of the pathname shortening package
+    },
     "target": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "types": ["vite/client"]
 
     /* Bundler mode */
     "moduleResolution": "bundler",
