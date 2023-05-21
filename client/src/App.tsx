@@ -1,4 +1,4 @@
-import { ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { useMemo } from "react";
 import { themeSettings } from "./theme";
@@ -11,6 +11,7 @@ function App() {
       <div className="app">
         <ThemeProvider theme={theme}>
           <CssBaseline />
+          <h1>HELLO</h1>
         </ThemeProvider>
       </div>
     </>

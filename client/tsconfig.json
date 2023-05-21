@@ -7,11 +7,11 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "types": ["vite/client"]
+    "types": ["vite/client"],
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    "moduleResolution": "Node", // changed from 'bundler' to 'Node'
+    // "allowImportingTsExtensions": true, // had to comment out this line
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
