@@ -24,13 +24,13 @@ const Navbar = (props: Props) => {
       <FlexBetween gap="0.75rem">
         <QueryStatsIcon sx={{ fontSize: "28px" }} />
         <Typography variant="h4" fontSize="16px">
-          Finance Charts
+          Alastair's Charting
         </Typography>
       </FlexBetween>
 
       {/* RIGHT SIDE */}
       <FlexBetween gap="2rem">
-        
+
         <Box sx={{ "&:hover": { color: palette.primary[100] } }}>
           <Link
             to="/"
