@@ -27,6 +27,37 @@ const Navbar = (props: Props) => {
           Finance Charts
         </Typography>
       </FlexBetween>
+
+      {/* RIGHT SIDE */}
+      <FlexBetween gap="2rem">
+        
+        <Box sx={{ "&:hover": { color: palette.primary[100] } }}>
+          <Link
+            to="/"
+            onClick={() => setSelected("dashboard")}
+            style={{
+              color: selected === "dashboard" ? "inherit" : palette.grey[700],
+              textDecoration: "inherit"
+            }}
+          >
+            dashboard
+          </Link>
+        </Box>
+
+        <Box sx={{ "&:hover": { color: palette.primary[100] } }}>
+          <Link
+            to="/predictions"
+            onClick={() => setSelected("predictions")}
+            style={{
+              color: selected === "predictions" ? "inherit" : palette.grey[700],
+              textDecoration: "inherit"
+            }}
+          >
+            predictions
+          </Link>
+        </Box>
+
+      </FlexBetween>
     </FlexBetween>
   );
 };
