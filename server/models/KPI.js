@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { loadType } from "mongoose-currency";
 
-const schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 loadType(mongoose);
 
 // DAY Schema
