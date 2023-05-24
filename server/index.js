@@ -5,6 +5,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
+import kpiRoutes from "./routes/kpi.js";
 
 // CONFIGURATION Boilerplate to enable packages
 dotenv.config();
@@ -17,7 +18,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-console.log("Hello");
+
+// ROUTES
+app.use("/kpi", kpiRoutes);
+
 
 // MONGOOSE SETUP
 const PORT = process.env.PORT || 9000;
