@@ -23,7 +23,7 @@ app.use(cors());
 // ROUTES
 app.use("/kpi", kpiRoutes);
 
-// MONGOOSE SETUP
+// MONGOOSE SERVER CONNECTION
 const PORT = process.env.PORT || 9000;
 mongoose
   .connect(process.env.MONGO_URL, {
@@ -31,9 +31,10 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(async () => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    app.listen(PORT, () => console.log(`Running on server Port: ${PORT}`));
 
-    await mongoose.connection.db.dropDatabase(); // drop current db before seeding, need ADMIN privilege for this
-    KPI.insertMany(kpis);
+    // ADD DATA ONCE OR AS NEEDED!
+    // await mongoose.connection.db.dropDatabase(); // drop current db before seeding, need ADMIN privilege for this
+    // KPI.insertMany(kpis);
   })
   .catch((error) => console.log(`${error} did not connect.`));

@@ -9,7 +9,7 @@ export const api = createApi({
     getKpis: build.query<void, void>({ //voids will be removed, placeholder for args
       query: () => "kpi/kpis/",
       providesTags: ["Kpis"]
-    }),  
+    }),
   }),
 })
 
