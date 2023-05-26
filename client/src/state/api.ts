@@ -6,7 +6,7 @@ export const api = createApi({
   reducerPath: "main", // just name for API call
   tagTypes: ["Kpis"],
   endpoints: (build) => ({
-    getKpis: build.query<void, void>({ //voids will be removed, placeholder for args
+    getKpis: build.query<Array<GetKpisResponse>, void>({  // GetKpisResponse is the object inside our data array
       query: () => "kpi/kpis/",
       providesTags: ["Kpis"]
     }),
