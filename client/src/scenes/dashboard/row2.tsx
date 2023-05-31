@@ -13,9 +13,12 @@ import {
   Pie,
   PieChart,
   ResponsiveContainer,
+  Scatter,
+  ScatterChart,
   Tooltip,
   XAxis,
   YAxis,
+  ZAxis,
 } from "recharts";
 
 // hardcoding the data for the pieChart
@@ -32,13 +35,12 @@ const Row2 = () => {
   const { data: productData } = useGetProductsQuery();
   // console.log(data); // check to see if we get data back
 
-  // this fxn will only run when [data] changes
+  // this fxn will only run when [operationalData] changes
   const operationalExpenses = useMemo(() => {
     return (
       operationalData && // if there is data...
       operationalData[0].monthlyData.map(
         ({ month, operationalExpenses, nonOperationalExpenses }) => {
-          // first element of array (there's only 1 in this object), take monthly rev and expenses
           return {
             name: month.substring(0, 3), // grab name, then shorten it, format it as name
             "Operational Expenses": operationalExpenses, // format as operationalExpenses
@@ -48,6 +50,20 @@ const Row2 = () => {
       )
     );
   }, [operationalData]);
+
+  // this fxn will only run when [producData] changes
+  const productExpenseData = useMemo(() => {
+    return (
+      productData && // if there is data...
+      productData.map(({ _id, price, expense }) => {
+        return {
+          id: _id,
+          price: price,
+          expense: expense,
+        };
+      })
+    );
+  }, [productData]);
 
   return (
     <>
@@ -155,7 +171,48 @@ const Row2 = () => {
           </Box>
         </FlexBetween>
       </DashboardBox>
-      <DashboardBox gridArea="f"></DashboardBox>
+
+      {/* THIRD CHART: Scatterplot */}
+      <DashboardBox gridArea="f">
+        <BoxHeader title="Product Prices vs Expenses" sideText="+4%" />
+        <ResponsiveContainer width="100%" height="100%">
+          <ScatterChart
+            margin={{
+              top: 20,
+              right: 25,
+              bottom: 40,
+              left: -20,
+            }}
+          >
+            <CartesianGrid stroke={palette.grey[800]} />
+            <XAxis
+              type="number"
+              dataKey="price"
+              name="price"
+              axisLine={false}
+              tickLine={false}
+              style={{ fontSize: "10px" }}
+              tickFormatter={(v) => `£${v}`}
+            />
+            <YAxis
+              type="number"
+              dataKey="expense"
+              name="expense"
+              axisLine={false}
+              tickLine={false}
+              style={{ fontSize: "10px" }}
+              tickFormatter={(v) => `£${v}`}
+            />
+            <ZAxis type="number" range={[20]} />
+            <Tooltip formatter={(v) => `£${v}`} />
+            <Scatter
+              name="Product Expense Ratio"
+              data={productExpenseData}
+              fill={palette.tertiary[500]}
+            />
+          </ScatterChart>
+        </ResponsiveContainer>
+      </DashboardBox>
     </>
   );
 };
