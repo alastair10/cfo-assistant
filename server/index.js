@@ -7,9 +7,9 @@ import helmet from "helmet";
 import morgan from "morgan";
 import kpiRoutes from "./routes/kpi.js";
 import productRoutes from "./routes/product.js";
-import Product from "./models/Product.js"
+import Product from "./models/Product.js";
 import KPI from "./models/KPI.js";
-import { kpis } from "./data/data.js"; // import the seed data
+import { kpis, products } from "./data/data.js"; // import the seed data
 
 // CONFIGURATION Boilerplate to enable packages
 dotenv.config();
@@ -38,6 +38,7 @@ mongoose
 
     // ADD DATA ONCE OR AS NEEDED!
     // await mongoose.connection.db.dropDatabase(); // drop current db before seeding, need ADMIN privilege for this
-    // KPI.insertMany(kpis);
+    // KPI.insertMany(kpis); // seeding data: insert kpis into kpi db
+    // Product.insertMany(products); // seeding data: insert products into product db
   })
   .catch((error) => console.log(`${error} did not connect.`));
