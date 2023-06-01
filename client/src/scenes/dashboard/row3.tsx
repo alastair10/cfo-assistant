@@ -170,7 +170,7 @@ const Row3 = () => {
           {/* pieChartData has 3 elements so we loop through 3 times to make 3 pie charts */}
           {pieChartData?.map((data, i) => (
             <Box key={`${data[0].name}-${i}`}>
-              <PieChart width={110} height={100}>
+              <PieChart width={110} height={85}>
                 <Pie
                   data={data}
                   stroke="none" // removed border
@@ -185,7 +185,6 @@ const Row3 = () => {
                 </Pie>
               </PieChart>
               <Typography variant="h5">{data[0].name}</Typography>
-              <Typography variant="h5">{((data[0].value)*100/71000).toFixed(0)}%</Typography>
             </Box>
           ))}
         </FlexBetween>
