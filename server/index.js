@@ -7,9 +7,11 @@ import helmet from "helmet";
 import morgan from "morgan";
 import kpiRoutes from "./routes/kpi.js";
 import productRoutes from "./routes/product.js";
+import transactionRoutes from "./routes/transaction.js";
 import Product from "./models/Product.js";
+import Transaction from "./models/Transaction.js"
 import KPI from "./models/KPI.js";
-import { kpis, products } from "./data/data.js"; // import the seed data
+import { kpis, products, transactions } from "./data/data.js"; // import the seed data
 
 // CONFIGURATION Boilerplate to enable packages
 dotenv.config();
@@ -25,6 +27,7 @@ app.use(cors());
 // ROUTES
 app.use("/kpi", kpiRoutes);
 app.use("/product", productRoutes); // route for product and expenses
+app.use("/transaction", transactionRoutes);
 
 // MONGOOSE SERVER CONNECTION
 const PORT = process.env.PORT || 9000;
