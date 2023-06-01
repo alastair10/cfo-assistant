@@ -1,22 +1,50 @@
 import BoxHeader from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
+import FlexBetween from "@/components/FlexBetween";
 import {
   useGetKpisQuery,
   useGetProductsQuery,
   useGetTransactionsQuery,
 } from "@/state/api";
-import { Box, useTheme } from "@mui/material";
+import { Box, useTheme, Typography } from "@mui/material";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
 import React from "react";
+import { useMemo } from "react";
+import { Cell, Pie, PieChart } from "recharts";
 
 const Row3 = () => {
   // Pull in Theme
   const { palette } = useTheme();
+  const pieColors = [palette.primary[500],palette.primary[800]];
   // Pull in required Data
   const { data: transactionData } = useGetTransactionsQuery(); // pull in the data
   // console.log(transactionData) // test to see data is pulling in 50 txns
   const { data: productData } = useGetProductsQuery(); // pull in product data
   const { data: kpiData } = useGetKpisQuery(); // pull in kpi data
+
+  // Grab expense by category in kpi data, loop through and paste number
+  const pieChartData = useMemo(() => {
+    if (kpiData) {
+      const totalExpenses = kpiData[0].totalExpenses; // set total expenses
+      return Object.entries(kpiData[0].expensesByCategory).map( // get key and value
+        ([key, value]) => {
+          console.log(kpiData[0].expensesByCategory)
+          return [
+            {
+              name: key,
+              value: value,
+            },
+            // 
+            {
+              name: `${key} of Total`,
+              value: totalExpenses - value,
+              // value: totalExpenses,
+            },
+          ];
+        }
+      );
+    }
+  }, [kpiData]);
 
   // define column data for the products table
   const productColumns = [
@@ -61,7 +89,8 @@ const Row3 = () => {
       field: "productIds",
       headerName: "Count",
       flex: 0.35,
-      renderCell: (params: GridCellParams) => (params.value as Array<String>).length,
+      renderCell: (params: GridCellParams) =>
+        (params.value as Array<String>).length,
     },
   ];
 
@@ -132,7 +161,35 @@ const Row3 = () => {
           />
         </Box>
       </DashboardBox>
-      <DashboardBox gridArea="i"></DashboardBox>
+
+      {/* FOURTH CHART: Expense By Category with Pie Charts */}
+      <DashboardBox gridArea="i">
+        <BoxHeader title="Expense Breakdown By Category" sideText="Total Expenses: £71,000" />
+        <FlexBetween mt="0.5rem" gap="0.5rem" p="0 1rem" textAlign="center">
+          
+          {/* pieChartData has 3 elements so we loop through 3 times to make 3 pie charts */}
+          {pieChartData?.map((data, i) => (
+            <Box key={`${data[0].name}-${i}`}>
+              <PieChart width={110} height={100}>
+                <Pie
+                  data={data}
+                  stroke="none" // removed border
+                  innerRadius={18}
+                  outerRadius={35}
+                  paddingAngle={2}
+                  dataKey="value"
+                >
+                  {data.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={pieColors[index]} />
+                  ))}
+                </Pie>
+              </PieChart>
+              <Typography variant="h5">{data[0].name}</Typography>
+              <Typography variant="h5">{((data[0].value)*100/71000).toFixed(0)}%</Typography>
+            </Box>
+          ))}
+        </FlexBetween>
+      </DashboardBox>
       <DashboardBox gridArea="j"></DashboardBox>
     </>
   );
