@@ -24,12 +24,12 @@ import {
 // hardcoding the data for the pieChart
 const pieData = [
   { name: "Group A", value: 600 },
-  { name: "Group B", value: 400 },
+  { name: "Group B", value: 80 },
 ];
 
 const Row2 = () => {
   const { palette } = useTheme(); // get the colors
-  const pieColors = [palette.primary[800], palette.primary[300]];
+  const pieColors = [palette.primary[300], palette.primary[800]];
 
   const { data: operationalData } = useGetKpisQuery();
   const { data: productData } = useGetProductsQuery();
@@ -153,7 +153,7 @@ const Row2 = () => {
           <Box ml="-0.7rem" flexBasis="40%" textAlign="center">
             <Typography variant="h5">Target Sales</Typography>
             <Typography m="0.3rem 0" variant="h3" color={palette.primary[300]}>
-              83
+              283k
             </Typography>
             <Typography variant="h6">
               Finance goals of the campaign desired

@@ -35,11 +35,9 @@ const Row3 = () => {
               name: key,
               value: value,
             },
-            //
             {
               name: `${key} of Total`,
               value: totalExpenses - value,
-              // value: totalExpenses,
             },
           ];
         }
@@ -51,7 +49,7 @@ const Row3 = () => {
   const productColumns = [
     {
       field: "_id",
-      headerName: "id",
+      headerName: "Product Id",
       flex: 1,
     },
     {
@@ -72,7 +70,7 @@ const Row3 = () => {
   const transactionColumns = [
     {
       field: "_id",
-      headerName: "id",
+      headerName: "Transaction Id",
       flex: 1,
     },
     {
