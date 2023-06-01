@@ -15,7 +15,7 @@ import { Cell, Pie, PieChart } from "recharts";
 const Row3 = () => {
   // Pull in Theme
   const { palette } = useTheme();
-  const pieColors = [palette.primary[500],palette.primary[800]];
+  const pieColors = [palette.primary[500], palette.primary[800]];
   // Pull in required Data
   const { data: transactionData } = useGetTransactionsQuery(); // pull in the data
   // console.log(transactionData) // test to see data is pulling in 50 txns
@@ -26,15 +26,16 @@ const Row3 = () => {
   const pieChartData = useMemo(() => {
     if (kpiData) {
       const totalExpenses = kpiData[0].totalExpenses; // set total expenses
-      return Object.entries(kpiData[0].expensesByCategory).map( // get key and value
+      return Object.entries(kpiData[0].expensesByCategory).map(
+        // get key and value
         ([key, value]) => {
-          console.log(kpiData[0].expensesByCategory)
+          console.log(kpiData[0].expensesByCategory);
           return [
             {
               name: key,
               value: value,
             },
-            // 
+            //
             {
               name: `${key} of Total`,
               value: totalExpenses - value,
@@ -162,11 +163,13 @@ const Row3 = () => {
         </Box>
       </DashboardBox>
 
-      {/* FOURTH CHART: Expense By Category with Pie Charts */}
+      {/* THIRD CHART: Expense By Category with Pie Charts */}
       <DashboardBox gridArea="i">
-        <BoxHeader title="Expense Breakdown By Category" sideText="Total Expenses: £71,000" />
+        <BoxHeader
+          title="Expense Breakdown By Category"
+          sideText="Total Expenses: £71,000"
+        />
         <FlexBetween mt="0.5rem" gap="0.5rem" p="0 1rem" textAlign="center">
-          
           {/* pieChartData has 3 elements so we loop through 3 times to make 3 pie charts */}
           {pieChartData?.map((data, i) => (
             <Box key={`${data[0].name}-${i}`}>
@@ -189,7 +192,32 @@ const Row3 = () => {
           ))}
         </FlexBetween>
       </DashboardBox>
-      <DashboardBox gridArea="j"></DashboardBox>
+
+      {/* FOURTH CHART: Bar Graph */}
+      <DashboardBox gridArea="j">
+        <BoxHeader title="Overall IPO Readiness" sideText="+75%" />
+        <Box
+          height="15px"
+          margin="1.25rem 1rem 0.4rem 1rem"
+          bgcolor={palette.primary[800]}
+          borderRadius="1rem"
+        >
+          <Box
+            height="15px"
+            bgcolor={palette.primary[600]}
+            borderRadius="1rem"
+            width="75%"
+          ></Box>
+        </Box>
+        <Typography margin="0 1rem" variant="h6">
+          Have a great CFO in place, Build out the capabilities of your finance
+          team , Invest in robust internal administrative and financial systems,
+          Build the right board, Start meeting with select bankers early, Start
+          Clean up your cap table, Communicate (carefully) with your company
+          about IPO plans, Hire the right accounting firm, Resolve
+          company corporate governance, Develop a long-term financial model, etc.
+        </Typography>
+      </DashboardBox>
     </>
   );
 };
