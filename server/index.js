@@ -9,7 +9,7 @@ import kpiRoutes from "./routes/kpi.js";
 import productRoutes from "./routes/product.js";
 import transactionRoutes from "./routes/transaction.js";
 import Product from "./models/Product.js";
-import Transaction from "./models/Transaction.js"
+import Transaction from "./models/Transaction.js";
 import KPI from "./models/KPI.js";
 import { kpis, products, transactions } from "./data/data.js"; // import the seed data
 
@@ -43,5 +43,6 @@ mongoose
     // await mongoose.connection.db.dropDatabase(); // drop current db before seeding, need ADMIN privilege for this
     // KPI.insertMany(kpis); // seeding data: insert kpis into kpi db
     // Product.insertMany(products); // seeding data: insert products into product db
+    // Transaction.insertMany(transactions); // seeding data: insert transactions into transaction db
   })
   .catch((error) => console.log(`${error} did not connect.`));
