@@ -3,8 +3,18 @@ import FlexBetween from "@/components/FlexBetween";
 import { useGetKpisQuery } from "@/state/api";
 import { Button } from "@mui/material";
 import { useTheme, Box, Typography } from "@mui/material";
-import { bgcolor } from "@mui/system";
 import React, { useState } from "react";
+import {
+  CartesianGrid,
+  Label,
+  Legend,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 type Props = {};
 
@@ -38,6 +48,52 @@ const Predictions = (props = Props) => {
           Show predicted revenue for next year
         </Button>
       </FlexBetween>
+
+      {/* LINE CHART */}
+
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart
+          data={formattedData}
+          margin={{
+            top: 20,
+            right: 75,
+            left: 20,
+            bottom: 80,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" stroke={palette.grey[800]} />
+          <XAxis dataKey="name" tickLine={false} style={{ fontSize: "10px" }}>
+            <Label value="Month" offset={-5} position="insideBottom" />
+          </XAxis>
+          <YAxis
+            domain={[12000, 26000]}
+            axisLine={{ strokeWidth = "0" }}
+            style={{ fontSize: "10px" }}
+            tickFormatter={(v) => `£${v}`}
+          >
+            <Label
+              value="Revenue in GBP"
+              angle={-90}
+              offset={-5}
+              position="insideLeft"
+            />
+          </YAxis>
+          <Tooltip />
+          <Legend verticalAlign="top" />
+          <Line
+            yAxisId="left"
+            type="monotone"
+            dataKey="profit"
+            stroke={palette.tertiary[500]}
+          />
+          <Line
+            yAxisId="right"
+            type="monotone"
+            dataKey="revenue"
+            stroke={palette.primary.main}
+          />
+        </LineChart>
+      </ResponsiveContainer>
     </DashboardBox>
   );
 };
