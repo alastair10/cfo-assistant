@@ -8,7 +8,6 @@ import {
 } from "@/state/api";
 import { Box, useTheme, Typography } from "@mui/material";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
-import React from "react";
 import { useMemo } from "react";
 import { Cell, Pie, PieChart } from "recharts";
 
@@ -94,7 +93,8 @@ const Row3 = () => {
 
   return (
     <>
-      {/* FIRST TABLE: PRODUCTS*/}
+      {/* FIRST TABLE: List of products */}
+
       <DashboardBox gridArea="g">
         <BoxHeader
           title="List of Products"
@@ -127,7 +127,8 @@ const Row3 = () => {
         </Box>
       </DashboardBox>
 
-      {/* SECOND TABLE: TXNS */}
+      {/* SECOND TABLE: List of Transactions */}
+
       <DashboardBox gridArea="h">
         <BoxHeader
           title="Recent Orders"
@@ -161,16 +162,17 @@ const Row3 = () => {
       </DashboardBox>
 
       {/* THIRD CHART: Expense By Category with Pie Charts */}
+
       <DashboardBox gridArea="i">
         <BoxHeader
           title="Expense Breakdown By Category"
-          sideText="Total Expenses: £71,000"
+          sideText="" // TBD
         />
         <FlexBetween mt="-0.1rem" gap="0.5rem" p="0 1rem" textAlign="center">
           {/* pieChartData has 3 elements so we loop through 3 times to make 3 pie charts */}
           {pieChartData?.map((data, i) => (
             <Box key={`${data[0].name}-${i}`}>
-              <PieChart width={110} height={100}>
+              <PieChart width={110} height={95}>
                 <Pie
                   data={data}
                   stroke="none" // removed border
@@ -192,9 +194,10 @@ const Row3 = () => {
         </FlexBetween>
       </DashboardBox>
 
-      {/* FOURTH CHART: Bar Graph */}
+      {/* FOURTH CHART: IPO Bar Graph */}
+
       <DashboardBox gridArea="j">
-        <BoxHeader title="Overall IPO Readiness" sideText="+75%" />
+        <BoxHeader title="Overall IPO Readiness" sideText="~75%" />
         <Box
           height="15px"
           margin="1.25rem 1rem 0.4rem 1rem"

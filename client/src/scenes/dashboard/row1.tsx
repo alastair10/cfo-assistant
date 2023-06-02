@@ -16,9 +16,7 @@ import {
   LineChart,
   BarChart,
   Bar,
-} from "recharts"; // all from Rechart
-
-type Props = {};
+} from "recharts"; // all from Recharts
 
 const Row1 = () => {
   const { palette } = useTheme();
@@ -69,12 +67,13 @@ const Row1 = () => {
 
   return (
     <>
-      {/* FIRST CHART */}
+      {/* FIRST CHART: Revenue and Expense line graphs */}
+
       <DashboardBox gridArea="a">
         <BoxHeader
           title="Revenue and Expenses"
           subtitle="LTM revenue and expenses"
-          sideText="Annual expense ratio"
+          sideText="" // TBD
         />
         {/* ResponsiveContainer from Recharts SimpleAreaChart code example */}
         <ResponsiveContainer width="100%" height="100%">
@@ -156,7 +155,7 @@ const Row1 = () => {
         <BoxHeader
           title="Profit and Revenue"
           subtitle="Topline revenue vs net profit"
-          sideText="UPDATE +4%"
+          sideText="Annual Profit Margin: 4%"
         />
         {/* ResponsiveContainer from Recharts SimpleAreaChart code example */}
         <ResponsiveContainer width="100%" height="100%">
@@ -215,7 +214,7 @@ const Row1 = () => {
         <BoxHeader
           title="Revenue Month by Month"
           subtitle="graph representing revenue by month"
-          sideText="CAGR = +2%"
+          sideText="0.88% CAGR"
         />
         <ResponsiveContainer width="100%" height="100%">
           <BarChart

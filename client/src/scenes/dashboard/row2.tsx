@@ -24,8 +24,8 @@ import {
 
 // hardcoding the data for the pieChart
 const pieData = [
-  { name: "Group A", value: 600 },
-  { name: "Group B", value: 80 },
+  { name: "Group A", value: 200 },
+  { name: "Group B", value: 83 },
 ];
 
 const Row2 = () => {
@@ -68,12 +68,12 @@ const Row2 = () => {
 
   return (
     <>
-      {/* FIRST CHART */}
+      {/* FIRST CHART: OpEx vs Non OpEx */}
 
       <DashboardBox gridArea="d">
         <BoxHeader
           title="Operational vs Non-operational Expenses"
-          sideText="UPDATE"
+          sideText="" // TBD
         />
         {/* ResponsiveContainer from Recharts SimpleAreaChart code example */}
         <ResponsiveContainer width="100%" height="100%">
@@ -124,10 +124,15 @@ const Row2 = () => {
         </ResponsiveContainer>
       </DashboardBox>
 
-      {/* SECOND CHART */}
+      {/* SECOND CHART: Campaign and Targets Pie Chart*/}
 
       <DashboardBox gridArea="e">
-        <BoxHeader title="Campaigns and Targets" sideText="UPDATE" />
+        <BoxHeader
+          title="Campaigns and Targets"
+          sideText={`${
+            (pieData[0].value / (pieData[0].value + pieData[1].value)).toFixed(3) * 100
+          }% Complete`}
+        />
         <FlexBetween mt="0.25rem" gap="1.5rem" pr="1rem">
           <PieChart
             width={110}
@@ -174,11 +179,12 @@ const Row2 = () => {
         </FlexBetween>
       </DashboardBox>
 
-      {/* THIRD CHART: Scatterplot */}
+      {/* THIRD CHART: Scatterplot product margin*/}
+
       <DashboardBox gridArea="f">
         <BoxHeader
           title="Product Margins: price vs expense"
-          sideText="AVG MARGIN?"
+          sideText="" // TBD
         />
         <ResponsiveContainer width="100%" height="100%">
           <ScatterChart
