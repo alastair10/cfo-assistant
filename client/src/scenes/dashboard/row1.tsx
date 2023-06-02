@@ -153,7 +153,7 @@ const Row1 = () => {
       <DashboardBox gridArea="b">
         <BoxHeader
           title="Profit and Revenue"
-          subtitle="topline is revenue, bottom line is profit"
+          subtitle="Topline revenue vs net profit"
           sideText="+4%"
         />
         {/* ResponsiveContainer from Recharts SimpleAreaChart code example */}

@@ -29,7 +29,6 @@ const Row3 = () => {
       return Object.entries(kpiData[0].expensesByCategory).map(
         // get key and value
         ([key, value]) => {
-          console.log(kpiData[0].expensesByCategory);
           return [
             {
               name: key,
@@ -99,7 +98,7 @@ const Row3 = () => {
       <DashboardBox gridArea="g">
         <BoxHeader
           title="List of Products"
-          sideText={`${productData?.length} products`}
+          sideText={`${productData?.length} total products`}
         />
         <Box
           mt="0.5rem"
@@ -208,12 +207,8 @@ const Row3 = () => {
           ></Box>
         </Box>
         <Typography margin="0 1rem" variant="h6">
-          Have a great CFO in place, Build out the capabilities of your finance
-          team , Invest in robust internal administrative and financial systems,
-          Build the right board, Start meeting with select bankers early, Start
-          Clean up your cap table, Communicate (carefully) with your company
-          about IPO plans, Hire the right accounting firm, Resolve
-          company corporate governance, Develop a long-term financial model, etc.
+          Hire CFO, Build out finance team , Invest in robust internal administrative and financial systems,
+          Build the right board,Clean up your cap table, Hire accounting firm, Resolve corporate governance, Build a long-term financial model, etc.
         </Typography>
       </DashboardBox>
     </>

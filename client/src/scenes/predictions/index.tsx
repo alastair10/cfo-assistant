@@ -4,6 +4,7 @@ import { useGetKpisQuery } from "@/state/api";
 import { Button } from "@mui/material";
 import { useTheme, Box, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { useMemo } from "react";
 import {
   CartesianGrid,
   Label,
@@ -15,10 +16,9 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import regression, { DataPoint } from "regression"; // format that regression takes
 
-type Props = {};
-
-const Predictions = (props = Props) => {
+const Predictions = () => {
   // get colours
   const { palette } = useTheme();
   // set state to control button
@@ -26,6 +26,36 @@ const Predictions = (props = Props) => {
 
   //get data
   const { data: kpiData } = useGetKpisQuery();
+
+  const formattedData = useMemo(() => {
+    // if theres no data, just make an empty array to avoid issues
+    if(!kpiData) return [];
+    
+    // grab monthly data from kpiData
+    const monthData = kpiData[0].monthlyData;
+
+    // format the monthly data we pull (Array<DataPoint> is needed to format the data corretly when passing it into regressionLine below)
+    const formatted: Array<DataPoint> = monthData.map(
+      // grab revenue as well as its index
+      // index will represent the months Jan-Dec
+      ({ revenue }, i: number) => {
+        return [i, revenue]
+      }
+    );
+      const regressionLine = regression.linear(formatted);
+
+      // now we cycle through the monthlydata to get each point for the line
+      // month aka [1], and the revenue aka [1] from [i][1]
+      return monthData.map(({ month, revenue }, i: number) => {
+        return {
+          name: month,
+          "Actual Revenue": revenue,
+          "Regression Line":  regressionLine.points[i][1],
+          "Predicted Revenue (in 12 months)": regressionLine.predict(i+12)[1] // represents reveneu next year
+        }
+      })
+
+  }, [kpiData])
 
   return (
     <DashboardBox width="100%" height="100%" p="1rem" overflow="hidden">
@@ -40,8 +70,8 @@ const Predictions = (props = Props) => {
         <Button
           onClick={() => setIsPredictions(!isPredictions)}
           sx={{
-            color: palette.grey[900],
-            backgroundColor: palette.grey[700],
+            color: palette.secondary[500],
+            backgroundColor: palette.grey[800],
             boxShadow: "0.1rem 0.1rem 0.1rem 0.1rem rgba(0,0,0,.4)",
           }}
         >
@@ -66,8 +96,8 @@ const Predictions = (props = Props) => {
             <Label value="Month" offset={-5} position="insideBottom" />
           </XAxis>
           <YAxis
-            domain={[12000, 26000]}
-            axisLine={{ strokeWidth = "0" }}
+            domain={[12000, 30000]}
+            axisLine={{ strokeWidth: "0" }}
             style={{ fontSize: "10px" }}
             tickFormatter={(v) => `£${v}`}
           >
@@ -81,17 +111,25 @@ const Predictions = (props = Props) => {
           <Tooltip />
           <Legend verticalAlign="top" />
           <Line
-            yAxisId="left"
             type="monotone"
-            dataKey="profit"
-            stroke={palette.tertiary[500]}
+            dataKey="Actual Revenue"
+            stroke={palette.primary.main}
+            strokeWidth={0}
+            dot={{ strokeWidth: 5 }}
           />
           <Line
-            yAxisId="right"
             type="monotone"
-            dataKey="revenue"
-            stroke={palette.primary.main}
+            dataKey="Regression Line"
+            stroke="#8884d8"
+            dot={false}
           />
+          {isPredictions && (
+            <Line
+              strokeDasharray="5 5"
+              dataKey="Predicted Revenue (in 12 months)"
+              stroke={palette.secondary[500]}
+            />
+          )}
         </LineChart>
       </ResponsiveContainer>
     </DashboardBox>

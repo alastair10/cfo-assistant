@@ -174,7 +174,7 @@ const Row2 = () => {
 
       {/* THIRD CHART: Scatterplot */}
       <DashboardBox gridArea="f">
-        <BoxHeader title="Product Prices vs Expenses" sideText="+4%" />
+        <BoxHeader title="Product Margins: price vs expense" sideText="+4%" />
         <ResponsiveContainer width="100%" height="100%">
           <ScatterChart
             margin={{
