@@ -32,7 +32,7 @@ const Row1 = () => {
       data[0].monthlyData.map(({ month, revenue, expenses }) => {
         // first element of array (there's only 1 in this object), take monthly rev and expenses
         return {
-          name: month.substring(0, 3), // grab name, then shorten it, format it as name
+          name: month.toUpperCase().substring(0, 3), // grab name, then shorten it, format it as name
           revenue: revenue, // format as revenue
           expenses: expenses, // format as expenses
         };
@@ -46,7 +46,7 @@ const Row1 = () => {
       data[0].monthlyData.map(({ month, revenue, expenses }) => {
         // first element of array (there's only 1 in this object), take monthly rev and expenses
         return {
-          name: month.substring(0, 3), // grab name, then shorten it, format it as name
+          name: month.toUpperCase().substring(0, 3), // grab name, then shorten it, format it as name
           revenue: revenue, // format as revenue
           profit: (revenue - expenses).toFixed(2), // format as expenses
         };
@@ -60,7 +60,7 @@ const Row1 = () => {
       data[0].monthlyData.map(({ month, revenue }) => {
         // first element of array (there's only 1 in this object), take monthly rev and expenses
         return {
-          name: month.substring(0, 3), // grab name, then shorten it, format it as name
+          name: month.toUpperCase().substring(0, 3), // grab name, then shorten it, format it as name
           revenue: revenue, // format as revenue
         };
       })
@@ -73,8 +73,8 @@ const Row1 = () => {
       <DashboardBox gridArea="a">
         <BoxHeader
           title="Revenue and Expenses"
-          subtitle="topline is revenue, bottom line is expenses"
-          sideText="+4%"
+          subtitle="LTM revenue and expenses"
+          sideText="Annual expense ratio"
         />
         {/* ResponsiveContainer from Recharts SimpleAreaChart code example */}
         <ResponsiveContainer width="100%" height="100%">
@@ -106,12 +106,12 @@ const Row1 = () => {
               <linearGradient id="colorExpenses" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor={palette.primary[300]}
+                  stopColor={palette.tertiary[500]}
                   stopOpacity={0.5}
                 />
                 <stop
                   offset="95%"
-                  stopColor={palette.primary[300]}
+                  stopColor={palette.tertiary[500]}
                   stopOpacity={0}
                 />
               </linearGradient>
@@ -128,6 +128,8 @@ const Row1 = () => {
               domain={[8000, 23000]}
             />
             <Tooltip />
+            <Legend height={20} wrapperStyle={{ margin: "0 0 10px 0" }} />
+
             <Area
               type="monotone"
               dataKey="revenue"
@@ -140,7 +142,7 @@ const Row1 = () => {
               type="monotone"
               dataKey="expenses"
               dot={true}
-              stroke={palette.primary.main}
+              stroke={palette.tertiary[500]}
               fillOpacity={1}
               fill="url(#colorExpenses)"
             />
@@ -148,13 +150,13 @@ const Row1 = () => {
         </ResponsiveContainer>
       </DashboardBox>
 
-      {/* SECOND CHART */}
+      {/* SECOND CHART: Revenue and Expense Line Graph */}
 
       <DashboardBox gridArea="b">
         <BoxHeader
           title="Profit and Revenue"
           subtitle="Topline revenue vs net profit"
-          sideText="+4%"
+          sideText="UPDATE +4%"
         />
         {/* ResponsiveContainer from Recharts SimpleAreaChart code example */}
         <ResponsiveContainer width="100%" height="100%">
@@ -190,28 +192,30 @@ const Row1 = () => {
             />
             <Tooltip />
             <Legend height={20} wrapperStyle={{ margin: "0 0 10px 0" }} />
-            <Line
-              yAxisId="left"
-              type="monotone"
-              dataKey="profit"
-              stroke={palette.tertiary[500]}
-            />
+
             <Line
               yAxisId="right"
               type="monotone"
               dataKey="revenue"
               stroke={palette.primary.main}
             />
+            <Line
+              yAxisId="left"
+              type="monotone"
+              dataKey="profit"
+              stroke={palette.tertiary[100]}
+            />
           </LineChart>
         </ResponsiveContainer>
       </DashboardBox>
 
       {/* THIRD Chart */}
+
       <DashboardBox gridArea="c">
         <BoxHeader
           title="Revenue Month by Month"
           subtitle="graph representing revenue by month"
-          sideText="+2%"
+          sideText="CAGR = +2%"
         />
         <ResponsiveContainer width="100%" height="100%">
           <BarChart

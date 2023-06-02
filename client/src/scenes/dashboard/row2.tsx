@@ -8,6 +8,7 @@ import { useMemo } from "react";
 import {
   CartesianGrid,
   Cell,
+  Legend,
   Line,
   LineChart,
   Pie,
@@ -42,7 +43,7 @@ const Row2 = () => {
       operationalData[0].monthlyData.map(
         ({ month, operationalExpenses, nonOperationalExpenses }) => {
           return {
-            name: month.substring(0, 3), // grab name, then shorten it, format it as name
+            name: month.toUpperCase().substring(0, 3), // grab name, then shorten it, format it as name
             "Operational Expenses": operationalExpenses, // format as operationalExpenses
             "Non Operational Expenses": nonOperationalExpenses, // format as nonOpExpenses
           };
@@ -72,7 +73,7 @@ const Row2 = () => {
       <DashboardBox gridArea="d">
         <BoxHeader
           title="Operational vs Non-operational Expenses"
-          sideText="+9%"
+          sideText="UPDATE"
         />
         {/* ResponsiveContainer from Recharts SimpleAreaChart code example */}
         <ResponsiveContainer width="100%" height="100%">
@@ -106,6 +107,7 @@ const Row2 = () => {
               style={{ fontSize: "10px" }}
             />
             <Tooltip />
+            <Legend height={20} wrapperStyle={{ margin: "0 0 10px 0" }} />
             <Line
               yAxisId="left"
               type="monotone"
@@ -125,7 +127,7 @@ const Row2 = () => {
       {/* SECOND CHART */}
 
       <DashboardBox gridArea="e">
-        <BoxHeader title="Campaigns and Targets" sideText="+4%" />
+        <BoxHeader title="Campaigns and Targets" sideText="UPDATE" />
         <FlexBetween mt="0.25rem" gap="1.5rem" pr="1rem">
           <PieChart
             width={110}
@@ -174,7 +176,10 @@ const Row2 = () => {
 
       {/* THIRD CHART: Scatterplot */}
       <DashboardBox gridArea="f">
-        <BoxHeader title="Product Margins: price vs expense" sideText="+4%" />
+        <BoxHeader
+          title="Product Margins: price vs expense"
+          sideText="AVG MARGIN?"
+        />
         <ResponsiveContainer width="100%" height="100%">
           <ScatterChart
             margin={{
