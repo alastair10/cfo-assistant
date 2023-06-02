@@ -166,11 +166,11 @@ const Row3 = () => {
           title="Expense Breakdown By Category"
           sideText="Total Expenses: £71,000"
         />
-        <FlexBetween mt="0.5rem" gap="0.5rem" p="0 1rem" textAlign="center">
+        <FlexBetween mt="-0.1rem" gap="0.5rem" p="0 1rem" textAlign="center">
           {/* pieChartData has 3 elements so we loop through 3 times to make 3 pie charts */}
           {pieChartData?.map((data, i) => (
             <Box key={`${data[0].name}-${i}`}>
-              <PieChart width={110} height={85}>
+              <PieChart width={110} height={100}>
                 <Pie
                   data={data}
                   stroke="none" // removed border
@@ -184,7 +184,9 @@ const Row3 = () => {
                   ))}
                 </Pie>
               </PieChart>
-              <Typography variant="h5">{data[0].name}</Typography>
+              <Typography variant="h5" m="-0.5rem">
+                {data[0].name}
+              </Typography>
             </Box>
           ))}
         </FlexBetween>
@@ -207,8 +209,10 @@ const Row3 = () => {
           ></Box>
         </Box>
         <Typography margin="0 1rem" variant="h6">
-          Hire CFO, Build out finance team , Invest in robust internal administrative and financial systems,
-          Build the right board,Clean up your cap table, Hire accounting firm, Resolve corporate governance, Build a long-term financial model, etc.
+          Hire CFO, Build out finance team , Invest in robust internal
+          administrative and financial systems, Build the right board,Clean up
+          your cap table, Hire accounting firm, Resolve corporate governance,
+          Build a long-term financial model, etc.
         </Typography>
       </DashboardBox>
     </>
