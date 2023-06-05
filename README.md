@@ -3,12 +3,10 @@
   <img src="client/public/chart_icon.png" alt="graph-icon" width="200">
   <br>
   CFO Assistant
-  <br>
-  <br>
 </h1>
 
 <h4 align="center">A financial data visualisation and revenue projection tool. </h4>
-
+<br>
 <p align="center">
   <img height="30" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
   <img height="30" src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" />
@@ -21,9 +19,9 @@
 </p>
 <br>
 
-CFO Assistant is a full-stack app to help visualise and track a company's relevant financial KPIs as well as project its future revenue. As an [ex-finance professional](https://www.linkedin.com/in/alastairchau/), I had always wanted a more user-friendly way to visualise financial data other than Excel charts and graphs. (No offence to Excel - still a great tool!)
+CFO Assistant is a full-stack app to help visualise and track a company's relevant financial KPIs as well as project its future revenue. As an [ex-finance professional](https://www.linkedin.com/in/alastairchau/), I had always wanted a more user-friendly way to visualise financial data other than Excel charts and graphs. (No offence to Excel... it's still a great tool!)
 
-This app was also built as a way for me to learn how to handle and display data using charts and graphs as well as become more comfortable with TypeScript.
+This app was also built as a way for me to learn how to handle and display data using charts and graphs as well as become more comfortable with TypeScript and database design.
 
 ### Features
 
@@ -33,7 +31,7 @@ This app was also built as a way for me to learn how to handle and display data 
 
 <img src="client/public/screenshot_1.png" alt="screenshot_1">
 <br>
-<img src="client/public/screenshot_2.gif" alt="screenshot_2">
+<img src="client/public/screenshot_2.png" alt="screenshot_2">
 
 ### Tech
 
@@ -58,15 +56,15 @@ Regression library
 - Predictions are made with [regression-js](https://github.com/tom-alexander/regression-js) library
 
 ### Database design
-<img src="client/public/Database_design.png" alt="database">
+<img src="client/public/Database_design.png" alt="database" width="500">
 
 
 
 ### Running the app
 
-Clone the repo:
+Clone this repo:
 ```
-git clone https://github.com/alastair10/finance-charts-and-projections
+git clone https://github.com/alastair10/cfo-assistant
 ```
 Install dependencies and launch server on the `client`:
 ```
