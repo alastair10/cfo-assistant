@@ -21,7 +21,7 @@
 </p>
 <br>
 
-CFO Assistant is a full-stack app to help visualise and track a company's relevant financial KPIs as well as project its future revenue. As an [ex-finance professional](https://www.linkedin.com/in/alastairchau/), I had always wanted a more user-friendly way to visualise financial data other than Excel charts and graphs. (No offense to Excel - still a great tool!)
+CFO Assistant is a full-stack app to help visualise and track a company's relevant financial KPIs as well as project its future revenue. As an [ex-finance professional](https://www.linkedin.com/in/alastairchau/), I had always wanted a more user-friendly way to visualise financial data other than Excel charts and graphs. (No offence to Excel - still a great tool!)
 
 This app was also built as a way for me to learn how to handle and display data using charts and graphs as well as become more comfortable with TypeScript.
 
@@ -29,6 +29,10 @@ This app was also built as a way for me to learn how to handle and display data 
 
 - A responsive layout  scatter plots, line graphs, tables, and pie charts to visualise financial data and KPIs.
 - Tab to project next year's revenue using a simple linear regression model based on current year revenue data.
+- Responsive layout that adjusts to screensize and shows more information when hovering over data points
+
+<img src="client/public/features.gif" alt="gif">
+
 
 ### Tech
 
@@ -39,18 +43,22 @@ Front end
 - [Redux Toolkit](https://redux-toolkit.js.org/) for state management
 - [Redux Toolkit Query](https://redux-toolkit.js.org/rtk-query/overview) for API calls
 - [React Router](https://reactrouter.com/en/main) for page navigation
-- [Material UI](https://mui.com/material-ui/getting-started/overview/) for react component library
+- [Material UI](https://mui.com/material-ui/getting-started/overview/) for React component library
 - [Material UI DataGrid](https://mui.com/x/api/data-grid/data-grid/) for tables
 
 Back end
 - [Node.js](https://nodejs.org/en) runtime environment
-- Express.js framework
+- [Express.js](https://expressjs.com/) framework
 
 Database
 - [MongoDB Atlas](https://www.mongodb.com/atlas/database)
 
 Regression library
 - Predictions are made with [regression-js](https://github.com/tom-alexander/regression-js) library
+
+### Database design
+<img src="client/public/Database_design.png" alt="database">
+
 
 
 ### Running the app
@@ -59,7 +67,7 @@ Clone the repo:
 ```
 git clone https://github.com/alastair10/finance-charts-and-projections
 ```
-Install dependencies and launch server on `client`:
+Install dependencies and launch server on the `client`:
 ```
 cd client
 npm install
