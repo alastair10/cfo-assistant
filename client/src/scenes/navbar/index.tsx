@@ -4,9 +4,7 @@ import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import { Box, Typography, useTheme } from "@mui/material";
 import FlexBetween from "@/components/FlexBetween";
 
-type Props = {};
-
-const Navbar = (props: Props) => {
+const Navbar = () => {
   /*
   useTheme is grabbing theme settings we created
   grabbing the palette object in theme.ts file
@@ -24,14 +22,14 @@ const Navbar = (props: Props) => {
       <FlexBetween gap="0.75rem">
         <QueryStatsIcon sx={{ fontSize: "28px" }} />
         <Typography variant="h4" fontSize="16px">
-          Alastair's Charting
+          CFO Assistant
         </Typography>
       </FlexBetween>
 
       {/* RIGHT SIDE */}
       <FlexBetween gap="2rem">
 
-        <Box sx={{ "&:hover": { color: palette.primary[100] } }}>
+        <Box sx={{ "&:hover": { color: palette.tertiary[500] } }}>
           <Link
             to="/"
             onClick={() => setSelected("dashboard")}
@@ -44,7 +42,7 @@ const Navbar = (props: Props) => {
           </Link>
         </Box>
 
-        <Box sx={{ "&:hover": { color: palette.primary[100] } }}>
+        <Box sx={{ "&:hover": { color: palette.tertiary[500] } }}>
           <Link
             to="/predictions"
             onClick={() => setSelected("predictions")}

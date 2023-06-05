@@ -201,12 +201,12 @@ const Row3 = () => {
         <Box
           height="15px"
           margin="1.25rem 1rem 0.4rem 1rem"
-          bgcolor={palette.primary[800]}
+          bgcolor={palette.tertiary[600]}
           borderRadius="1rem"
         >
           <Box
             height="15px"
-            bgcolor={palette.primary[600]}
+            bgcolor={palette.tertiary[500]}
             borderRadius="1rem"
             width="75%"
           ></Box>
