@@ -35,11 +35,6 @@ This app was also built as a way for me to learn how to handle and display data 
 <br>
 <img src="client/public/screenshot_2.gif" alt="screenshot_2">
 
-
-
-
-
-
 ### Tech
 
 Front end
