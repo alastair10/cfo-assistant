@@ -31,7 +31,9 @@ This app was also built as a way for me to learn how to handle and display data 
 - Tab to project next year's revenue using a simple linear regression model based on current year revenue data.
 - Responsive layout that adjusts to screensize and shows more information when hovering over data points
 
-<img src="client/public/features.gif" alt="gif">
+<img src="client/public/screenshot_1.png" alt="screenshot_1">
+<br>
+<img src="client/public/projected_rev.gif" alt="gif">
 
 
 ### Tech
