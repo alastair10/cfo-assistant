@@ -19,15 +19,15 @@
 </p>
 <br>
 
-CFO Assistant is a full-stack app to help visualise and track a company's relevant financial KPIs as well as project its future revenue. As an [ex-finance professional](https://www.linkedin.com/in/alastairchau/), I had always wanted a more user-friendly way to visualise financial data other than Excel charts and graphs. (No offence to Excel... it's still a great tool!)
+CFO Assistant is a full-stack app to help visualise and track a company's relevant financial KPIs as well as project its future revenue. As an [ex-finance professional](https://www.linkedin.com/in/alastairchau/), I had always wanted a more user-friendly way to visualise financial data other than Excel charts and graphs. (No offence to Excel... still think it's an amazing tool!)
 
 This app was also built as a way for me to learn how to handle and display data using charts and graphs as well as become more comfortable with TypeScript and database design.
 
 ### Features
 
 - A responsive layout  scatter plots, line graphs, tables, and pie charts to visualise financial data and KPIs.
-- Tab to project next year's revenue using a simple linear regression model based on current year revenue data.
-- Responsive layout that adjusts to screensize and shows more information when hovering over data points
+- Tab to project next year's revenue using a [simple linear regression library](https://github.com/tom-alexander/regression-js) based on current year revenue data.
+- Responsive layout that adjusts to screensize and shows more information when hovering over data points.
 
 <img src="client/public/screenshot_1.png" alt="screenshot_1">
 <br>
@@ -66,13 +66,13 @@ Clone this repo:
 ```
 git clone https://github.com/alastair10/cfo-assistant
 ```
-Install dependencies and launch server on the `client`:
+Install dependencies and launch dev server on the `client`... 
 ```
 cd client
 npm install
 npm run dev
 ```
-Install dependencies and launch server on the `server`:
+... and now on the `server` side:
 ```
 cd server
 npm install
