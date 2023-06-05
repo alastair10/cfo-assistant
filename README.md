@@ -29,7 +29,8 @@ This app was also built as a way for me to learn how to handle and display data 
 
 - A responsive layout  scatter plots, line graphs, tables, and pie charts to visualise financial data and KPIs.
 - Tab to project next year's revenue using a simple linear regression model based on current year revenue data.
-
+- Responsive layout that adjusts to screensize and shows more information when hovering over data points.
+- 
 ### Tech
 
 Front end
