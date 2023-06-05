@@ -103,3 +103,4 @@ mongoose
   })
   .catch((error) => console.log(`${error} did not connect.`));
 ```
+![Visits Badge](https://badges.pufler.dev/visits/alastair10/cfo-assistant)
