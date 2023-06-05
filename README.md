@@ -33,7 +33,11 @@ This app was also built as a way for me to learn how to handle and display data 
 
 <img src="client/public/screenshot_1.png" alt="screenshot_1">
 <br>
-<img src="client/public/projected_rev.gif" alt="gif">
+<img src="client/public/screenshot_2.gif" alt="screenshot_2">
+
+
+
+
 
 
 ### Tech
